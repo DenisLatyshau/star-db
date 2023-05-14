@@ -4,9 +4,19 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ErrorBoundry from '../error-boundry';
 
+
 import Row from "../row/row";
 import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
+
+import {
+  PlanetList,
+  PersonList,
+  StarshipList,
+  PlanetDetails,
+  PersonDetails,
+  StarshipDetails
+} from '../sw-components'
 
 import './app.css';
 
@@ -67,9 +77,18 @@ export default class App extends Component {
         <div className="stardb-app">
           <Header />
 
-          <Row
-            left={personDetails}
-            right={starshipDetails} />
+          <PersonList>
+            { ({name}) => <span>{name}</span>}
+          </PersonList> 
+
+          <PlanetList>
+            { ({name}) => <span>{name}</span>}
+          </PlanetList> 
+
+          <StarshipList>
+            { ({name}) => <span>{name}</span>}
+          </StarshipList> 
+
         </div>
       </ErrorBoundry>
     );
