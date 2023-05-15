@@ -9,6 +9,8 @@ import Row from "../row/row";
 import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
 
+import { SwapiServiceProvider } from '../swapi-service-context';
+
 import {
   PlanetList,
   PersonList,
@@ -74,22 +76,24 @@ export default class App extends Component {
 
     return (
       <ErrorBoundry>
-        <div className="stardb-app">
-          <Header />
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="stardb-app">
+            <Header />
 
-          <PersonList /> 
+            <PersonList /> 
 
-          <PlanetList /> 
+            <PlanetList /> 
 
-          <StarshipList /> 
+            <StarshipList /> 
 
-          <PersonDetails itemId={11} />
+            <PersonDetails itemId={11} />
 
-          <PlanetDetails itemId={5} />
+            <PlanetDetails itemId={5} />
 
-          <StarshipDetails itemId={9} />
+            <StarshipDetails itemId={9} />
 
-        </div>
+          </div>
+        </SwapiServiceProvider>
       </ErrorBoundry>
     );
   }
